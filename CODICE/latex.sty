@@ -1,0 +1,1474 @@
+\documentclass{article}
+\usepackage[a4paper,top=2.5cm,bottom=2.5cm,left=3cm,right=3cm]{geometry}
+\usepackage{graphicx}
+\usepackage[english,italian]{babel}
+\usepackage{hyperref} % Rende l'indice cliccabile
+\usepackage{xcolor}
+\usepackage{listings}
+\lstset{
+    language=SQL,
+    basicstyle=\ttfamily,
+    keywordstyle=\color{blue},
+    stringstyle=\color{red},
+    commentstyle=\color{green!60!black},
+    showstringspaces=false,
+    breaklines=true,
+    frame=tb,
+    numbers=left,
+    numberstyle=\tiny\color{gray},
+    captionpos=b,
+    tabsize=2
+}
+
+\hypersetup{ % Setup dell'aspetto dei link
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black
+}
+
+\begin{document}
+\pagenumbering{gobble} %disabilita il numeraggio delle pagine
+\begin{center}
+    \includegraphics[width=5cm]{logo parthenoe.jpeg}
+\end{center}
+
+\begin{center}
+    \LARGE{\textbf{UNIVERSITÀ DEGLI STUDI DI NAPOLI PARTHENOPE}}
+    \vspace{3mm}
+    \\ \normalsize{DIPARTIMENTO DI SCIENZE E TECNOLOGIE}
+    \\ \normalsize{CORSO DI BASI DI DATI E LAB. DI BASI DI DATI}
+\end{center}
+
+\vspace{8mm}
+
+\begin{center}
+\LARGE{\textbf{Fabbrica di microcontrollori}}
+\end{center}
+\vspace{1mm}
+\begin{center}
+    \includegraphics[width=10cm]{download.jpeg}
+\end{center}
+\vspace{20mm}
+
+\begin{flushleft}
+  {\textbf{Studenti\hspace{3,1cm}Matricola}} 
+  \vspace{5mm}
+  
+  Galiero Nicola\hspace{2,5cm}0124002671
+  
+  Capocotta Giuseppe\hspace{1,55cm}0124002676
+\end{flushleft}
+
+\vspace{3mm}
+\begin{flushleft}
+  {\textbf{Data di consegna}}\hspace{1,5cm}
+  18/06/2023  
+\end{flushleft}
+
+\vspace{2mm}
+
+\begin{flushleft}
+  {\textbf{Anno accademico}}\hspace{1,5cm}2022 - 2023  
+\end{flushleft}
+
+\vspace{4mm}
+
+\begin{flushleft}
+    \textbf{Categoria}   
+    \vspace{5mm}
+    \hspace{2.5cm} Attività commerciale
+\end{flushleft}
+ 
+\newpage
+
+\pagenumbering{arabic}
+\tableofcontents
+
+\newpage
+\section*{Premessa}
+Noi sottoscritti Galiero Nicola e Capocotta Giuseppe abbiamo scelto un tema a noi stretto in quanto avendo frequentato insieme le scuole superiori, portando all'esame di maturità dei progetti legati al settore dei microcontrollori.
+
+
+\vspace{1cm}
+
+\section{Progettazione}
+
+\subsection{Analisi dei requisiti}
+\noindent L'azienda produttrice di componenti elettronici necessita di un sistema di gestione dei dati efficiente e affidabile per supportare le sue attività quotidiane. In particolare, l'azienda deve essere in grado di gestire i dati relativi alla produzione dei suoi prodotti, ai fornitori, ai clienti e ai dipendenti.
+\item
+Per quanto riguarda la produzione, l'azienda deve essere in grado di monitorare lo stato dei suoi processi produttivi, il livello di inventario dei componenti (magazzino), la disponibilità della forza lavoro (turni) e la qualità dei prodotti finiti (collaudo). Inoltre, l'azienda deve essere in grado di programmare la produzione dei suoi prodotti in modo efficiente, considerando i tempi di consegna richiesti dai clienti e le scorte di magazzino disponibili.
+
+\item Per quanto riguarda i fornitori, l'azienda deve essere in grado di gestire i dati relativi ai fornitori con cui collabora, inclusi i loro dati di contatto e i loro prezzi. Inoltre, l'azienda deve essere in grado di tenere traccia degli ordini effettuati ai fornitori e dei tempi di consegna previsti.
+
+\item Per quanto riguarda i clienti, l'azienda deve essere in grado di gestire i dati relativi ai clienti, inclusi i loro dati di contatto e i loro ordini. Inoltre, i corrieri spediscono gli ordini richiesti dai clienti.
+
+ \vspace{8mm}
+
+\subsection{Glossario}
+Il glossario ha lo scopo fondamentale di chiarire il gergo tecnico usato nella descrizione dei
+requisiti e di evidenziare eventuali sinonimi.
+\begin{flushleft}
+    \begin{tabular}{|c|c|c|}
+  \hline
+  Termine   &   Definizione   &   Sinonimo   \\
+  \hline
+  \begin{center} Gestione dei dati\end{center}   &   \begin{center} Organizzazione e manipolazione dei dati\end{center}   & Rendimento \\  \hline
+
+ \begin{center} Processi produttivi\end{center}    &   \begin{center} Attività e fasi di lavorazione\end{center}   & Lavoro \\  \hline
+
+  \begin{center} Inventari di componenti\end{center}   & \begin{center} Quantità di componenti elettronici\end{center}   &   Catalogo  \\  \hline
+  
+   \begin{center} Forza lavoro\end{center}   
+      &   \begin{center} Personale impiegato nell'azienda\end{center}
+   &   ---   \\
+  \hline
+  
+   \begin{center} Programmazione della produzione\end{center}   &   \begin{center} Pianificazione delle attività produttive\end{center}   &   --- \\
+  \hline
+
+   \begin{center} Fornitori\end{center}   &   \begin{center} Imprese che forniscono componenti\end{center}   &   ---   \\
+  \hline
+
+   \begin{center} Scorte di magazzino\end{center}   &   \begin{center} Rappresentano i componenti elettronici\end{center}   &   ---   \\
+  \hline
+
+   \begin{center} Dati di contatto\end{center}   &   \begin{center} Informazioni di contatto dei fornitori e dei clienti\end{center}   &   ---   \\
+  \hline
+
+    
+
+    \end{tabular}
+\end{flushleft}
+
+\vspace{8mm}
+\newpage
+\subsection{Diagramma EE/R}
+\begin{flushleft}
+Non sono indicate le cardinalità massime e
+minime delle associazioni. Sono indicate solo le molteplicità.
+\end{flushleft}
+        \includegraphics[width=15cm, height=10cm]{fabbrica.png}
+\begin{center}
+    Figura 1: Diagramma relazionale
+\end{center}     
+
+\vspace{5mm}
+
+\subsection{Elenco delle operazioni di base}
+Le operazioni di base in un database si riferiscono alle azioni fondamentali che possono essere eseguite per manipolare i dati all'interno di un database, come l'inserimento di un nuovo dipendente. Questi dati vengono gestiti dall'amministratore che detiene tutti i permessi. Queste operazioni sono visibili nella parte di popolamento delle tabelle(vedi paragrafo 2.3 Data Manipulation Language).
+\newpage
+\subsection{Elenco delle operazioni degli utenti}
+Gli utenti (vedi paragrafo 2.6) effettuano le seguenti operazioni con i relativi permessi:
+\begin{lstlisting}
+   UTENTE       TIPO               PERMESSI
+
+db_fabbrica     amministratore     ALL
+
+responsabile    comune        UPDATE ON progettazione
+                                        produzione
+                              EXECUTE responsabile_aumenta_stato
+
+cliente         comune        SELECT ON cliente
+                                        progetto
+                              INSERT ON cliente
+                                        ordine
+                              UPDATE ON ordine
+ 
+                              EXECUTE ordina_progetto
+                              EXECUTE cancella_progetto_ordine
+
+fornitore       comune        SELECT ON fornitore
+                              SELECT ON componente
+                              INSERT on fornitura
+
+                              EXECUTE inserisci_fornitura 
+\end{lstlisting}
+
+ \vspace{8mm}
+\subsection{Use case e descrittore di operazione per le operazioni degli utenti}
+\begin{center}
+    \includegraphics[width=10cm, height=10cm]{USECASE.png}
+\end{center}
+\begin{center}
+    Diagramma Use Case
+\end{center}
+\newpage
+Seguono le schede descrittore operazione per le operazioni degli utenti
+\vspace{1cm}
+\begin{flushleft}
+    \begin{tabular}{l|l}
+
+\textbf{OPERAZIONI} & \textbf{ORDINA PROGETTO}\\
+\hline
+&\\
+SCOPO & Inserire un nuovo ordine da parte di un cliente\\
+&\\
+ARGOMENTI & Nome cliente\\
+& Cognome cliente\\
+& Email cliente\\
+& Telefono cliente\\
+& Via cliente\\
+& Città cliente\\
+& Cap cliente\\
+& Nome progetto\\
+&\\
+RISULTATO & Ordine aggiunto alla tabella ordini \\
+&\\
+ERRORI & Il progetto non esiste \\
+ & \\
+USA & Cliente \\
+& Progetto\\
+& Ordine\\
+&\\
+MODIFICA & Cliente \\
+& Ordine\\
+& \\
+PRIMA & Se il cliente non esiste viene creato \\
+&\\
+POI & Cliente aggiunto al database\\
+
+\end{tabular}
+\end{flushleft}
+\begin{flushleft}
+    
+    \begin{tabular}{l|l}
+
+\textbf{OPERAZIONI} & \textbf{CANCELLA PROGETTO DALL'ORDINE}\\
+\hline
+&\\
+SCOPO & Cancellare un progetto da un\\
+& ordine se quest'ultimo ne contiene\\
+& più progettiI\\
+&\\
+ARGOMENTI & Nome cliente\\
+& ID ordine\\
+& ID progetto\\
+&\\
+RISULTATO & Ordine cancellato \\
+&\\
+ERRORI & L'ordine non esiste \\
+ & \\
+USA & Progetto\\
+& Ordine\\
+&\\
+MODIFICA & Ordine\\
+& \\
+PRIMA & Ordine con due o più progetti\\
+&\\
+POI & Progetto dall'ordine cancellato\\
+
+\end{tabular}
+\end{flushleft}
+\vspace{2cm}
+\begin{flushleft}
+    
+    \begin{tabular}{l|l}
+
+\textbf{OPERAZIONI} & \textbf{INSERIRE 
+FORNITURA}\\
+\hline
+&\\
+SCOPO & Inserire una nuova fornitura\\
+&\\
+ARGOMENTI & Partita iva del fornitore\\
+&    EAN componente \\
+&    Quantità\\
+&    Data dell'acquisto\\
+&\\
+RISULTATO & Fornitura aggiunta \\
+&\\
+ERRORI & Il fornitore non esiste \\
+& Il componente non esiste\\
+ & \\
+USA & Componente\\
+& Fornitore\\
+& Fornitura\\
+&\\
+MODIFICA & Fornitura\\
+& \\
+PRIMA & - - - \\
+&\\
+POI & Fornitura inserita\\
+
+\end{tabular}
+\end{flushleft}
+
+\begin{flushleft}
+    \begin{tabular}{l|l}
+
+\textbf{OPERAZIONI} & \textbf{AUMENTO DI STATO NEI REPARTI}\\
+\hline
+&\\
+SCOPO & Responsabile aumenta lo Stato prootipo e lo Stato di produzione\\
+&\\
+ARGOMENTI & ID Progetto\\
+&\\
+RISULTATO & Stato produzione e progettazione variati \\
+&\\
+ERRORI & Gli stati non possono essere cambiati\\
+ & \\
+USA & Progettazione \\
+& Produzione\\
+&\\
+MODIFICA & Progettazione \\
+& Produzione\\
+& \\
+PRIMA & I precedenti stati della produzione e progettazione erano invariati \\
+&\\
+POI & Variazione dello stato di produzione\\
+
+\end{tabular}
+\end{flushleft}
+
+\vspace{8mm}
+
+\subsection{Elenco dei vincoli d'integrità statici}
+\begin{itemize}
+\item Non ci devono mai essere meno di X scorte in magazzino per ogni componente, altrimenti non si può fare nessun ordine.
+
+\item In un reparto ci devono essere almeno 8 dipendenti per turno.
+
+\item Ogni microcontrollore deve avere un singolo identificare
+
+
+\item I dati di contatto dei fornitori e dei clienti deve essere obbligatorio
+
+\item La duratura di un progetto nei reparti dura tra 5 giorni e 10 giorni
+\end{itemize}
+ \vspace{8mm}
+\subsection{Elenco dei vincoli di integrità dinamici}
+\begin{itemize}
+  \item Un ordine da parte di un cliente può essere cancellato al più dopo 5 ore.
+
+  \item Un progetto deve essere al più 15 giorni nei reparti di progettazione e produzione.
+
+  \item I dipendenti specializzati non possono lavorare più di 8 ore al giorno.
+  
+  \item Un fornitore non deve impiegare più di 2 giorni nel consegnare la merce.
+  
+  \item Il prezzo di un progetto è determinato dal prezzo dei singoli componenti elettronici coinvolti più una percentuale del 200%.
+  
+  \item In magazzino si verifica lo spazio residuo tramite la differenza tra i componenti già immagazzinati e lo spazio totale.
+  
+\end{itemize}
+
+ \vspace{8mm}
+
+\subsection{Diagramma relazionale}
+\begin{center}
+    \includegraphics[width=15cm, height=10cm]{DUML.png}
+\end{center}
+ \vspace{8mm}
+\subsection{Verifica di normalità dello schema}
+\item 
+Il diagramma relazionale soddisfa la prima forma normale (1FN) in quanto non ci sono ne attributi multivalore ne attributi strutturati.
+
+\item 
+Il diagramma relazionale soddisfa la seconda forma normale (2FN) .
+\item
+Tutte le tabelle rispettano la terza forma normale (3NF), poiché non presentano dipendenze transitiva o attributi non chiave che dipendono da altri attributi non chiave.
+
+ \vspace{8mm}
+ \newpage
+ \section{Implementazione}
+    \subsection{Creazione utenti}
+    Nel nostro database ci sono quattro utenti, di cui uno solo ha tutti i permessi generali.
+    In tabella l'elenco e i relativi permessi degli utenti e le operazioni che svolgono.
+    \begin{lstlisting}
+--Creazione utenti 
+CREATE USER proprietario_db_fabbrica    IDENTIFIED BY admin;
+CREATE USER responsabile   IDENTIFIED BY responsabile;
+CREATE USER cliente        IDENTIFIED BY cliente;
+CREATE USER fornitore      IDENTIFIED BY fornitore;
+ 
+--Do tutti i privilegi al proprietario del database
+GRANT ALL PRIVILEGES TO proprietario_db_fabbrica;
+
+    \end{lstlisting}
+    \subsection{Data Definition Language}
+    Il DDL riflette lo schema relazionale: le tabelle sono create mediante altrettante istruzioni di CREATE TABLE che includono tutti i vincoli di integrità esprimibili nel modello relazionale.
+
+    \subsubsection{Cliente}
+     \begin{lstlisting}
+CREATE TABLE CLIENTE (
+  IDCLIENTE NUMBER,
+  NOME VARCHAR2(30) NOT NULL,
+  COGNOME VARCHAR2(30) NOT NULL,
+  EMAIL VARCHAR2(30) NOT NULL,
+  TELEFONO NUMBER NOT NULL,
+  VIA VARCHAR2(30) NOT NULL,
+  CITTA VARCHAR2(30) NOT NULL,
+  CAP NUMBER NOT NULL
+  PRIMARY KEY (IDCLIENTE),
+  CONSTRAINT UK_EMAIL UNIQUE (EMAIL),
+  CONSTRAINT UK_TELEFONO UNIQUE (TELEFONO)
+);
+\end{lstlisting}
+    \subsubsection{Fattura}
+    \begin{lstlisting}
+CREATE TABLE FATTURA (
+  IDFATTURA NUMBER,
+  DATAEMISSIONE DATE,
+  TOTALE NUMBER NOT NULL,
+  PRIMARY KEY (IDFATTURA)
+);
+    \end{lstlisting}
+    
+    \subsubsection{Spedizione}
+    \begin{lstlisting}
+CREATE TABLE SPEDIZIONE (
+  IDSPEDIZIONE NUMBER PRIMARY KEY,
+  TEL NUMBER NOT NULL,
+  NOME VARCHAR2(30) NOT NULL,
+  VIA VARCHAR2(30) NOT NULL,
+  CITTA VARCHAR2(30) NOT NULL,
+  CAP NUMBER NOT NULL
+);
+    \end{lstlisting}
+    \subsubsection{Ordine}
+    \begin{lstlisting}
+        CREATE TABLE ORDINE (
+CREATE TABLE ORDINE (
+  IDORDINE NUMBER NOT NULL,
+  IDFATTURA NUMBER NOT NULL,
+  IDCLIENTE NUMBER NOT NULL,
+  IDSPEDIZIONE NUMBER NOT NULL,
+  NUMEROPRODOTTI NUMBER NOT NULL,
+  DATACREAZIONE DATE NOT NULL,
+  PRIMARY KEY (IDORDINE),
+  CONSTRAINT FK_ORDINE_FATTURA FOREIGN KEY (IDFATTURA) REFERENCES FATTURA(IDFATTURA),
+  CONSTRAINT FK_ORDINE_CLIENTE FOREIGN KEY (IDCLIENTE) REFERENCES CLIENTE(IDCLIENTE),
+  CONSTRAINT FK_ORDINE_SPEDIZIONE FOREIGN KEY (IDSPEDIZIONE) REFERENCES SPEDIZIONE(IDSPEDIZIONE)
+);
+    \end{lstlisting}
+    \subsubsection{Componente}
+    \begin{lstlisting}
+CREATE TABLE COMPONENTE (
+  EAN NUMBER,
+  NOME VARCHAR2(30) NOT NULL,
+  PREZZO NUMBER NOT NULL,
+  PRIMARY KEY (EAN)
+);
+    \end{lstlisting}
+    \subsubsection{Progetto}
+    \begin{lstlisting}
+CREATE TABLE PROGETTO (
+  IDPROG NUMBER,
+  NOME VARCHAR2(30) NOT NULL,
+  DATAINIZIO DATE,
+  PRIMARY KEY (IDPROG),
+  UNIQUE (NOME)
+);
+    \end{lstlisting}
+    \subsubsection{ComponentiProgetto}
+    \begin{lstlisting}
+CREATE TABLE COMPONENTIPROGETTO (   /* è  l'associazione "è composto" */
+  IDPROG NUMBER,
+  EAN NUMBER,
+  QUANTITA NUMBER(2,0),
+  FOREIGN KEY (IDPROG) REFERENCES PROGETTO (IDPROG),
+  FOREIGN KEY (EAN) REFERENCES COMPONENTE (EAN)
+);
+    \end{lstlisting}        
+    \subsubsection{Contiene}
+    \begin{lstlisting}
+CREATE TABLE CONTIENE (
+  IDPROG NUMBER,
+  IDORDINE NUMBER,
+  QUANTITA NUMBER,
+  FOREIGN KEY (IDPROG) REFERENCES PROGETTO(IDPROG),
+  FOREIGN KEY (IDORDINE) REFERENCES ORDINE(IDORDINE)
+);
+    \end{lstlisting}
+    \subsubsection{Fornitore}
+    \begin{lstlisting}
+CREATE TABLE FORNITORE (
+  PARTITAIVA CHAR(11),
+  VIA VARCHAR2(30),
+  CIVICO NUMBER ,
+  CAP NUMBER,
+  TEL NUMBER,
+  PRIMARY KEY (PARTITAIVA),
+  UNIQUE (TEL)
+);
+    \end{lstlisting}
+    \subsubsection{Fornitura}
+    \begin{lstlisting}
+REATE TABLE FORNITURA (
+  PARTITAIVAFORNITORE CHAR(11) PRIMARY KEY,
+  QUANTITA NUMBER(2,0) NOT NULL,
+  EAN NUMBER NOT NULL,
+  CONSTRAINT FK_FORNITURA_ESTERNA1 FOREIGN KEY (PARTITAIVAFORNITORE)
+  REFERENCES FORNITORE (PARTITAIVA),
+  CONSTRAINT FK_FORNITURA_ESTERNA2 FOREIGN KEY (EAN) REFERENCES COMPONENTE (EAN)
+
+);
+    \end{lstlisting}
+    \subsubsection{Reparto}
+    \begin{lstlisting}
+CREATE TABLE REPARTO (
+  IDREPARTO NUMBER PRIMARY KEY,
+  TELEFONO CHAR(10) UNIQUE,
+  DIPENDENTIMAX NUMBER NOT NULL
+);
+
+    \end{lstlisting}    
+    \subsubsection{Progettazione}
+    \begin{lstlisting}
+CREATE TABLE PROGETTAZIONE (
+  IDREPARTO NUMBER PRIMARY KEY,
+  STATOPROTOTIPO NUMBER(1),
+  STIMATEMPO NUMBER,/*numero di giorni*/
+  STIMAEFFORT NUMBER,/*quanto personale serve*/
+  IDPROG NUMBER,
+  CONSTRAINT FK_PROGETTAZIONE_PROGETTO FOREIGN KEY (IDPROG) REFERENCES PROGETTO(IDPROG),
+  FOREIGN KEY (IDREPARTO) REFERENCES REPARTO(IDREPARTO),
+  UNIQUE (IDPROG)
+);
+    \end{lstlisting}
+    \subsubsection{Produzione}
+    \begin{lstlisting}
+CREATE TABLE PRODUZIONE (
+  IDREPARTO NUMBER PRIMARY KEY,
+  IDPROG NUMBER,
+  STATO NUMBER(1),
+  NMACCHINE NUMBER NOT NULL,
+  CONSTRAINT FK_PRODUZIONE_PROGETTO FOREIGN KEY (IDPROG) REFERENCES PROGETTO(IDPROG),
+  FOREIGN KEY (IDREPARTO) REFERENCES REPARTO(IDREPARTO),
+  UNIQUE (IDPROG)
+);
+    \end{lstlisting}            
+    \subsubsection{Collaudo}
+    \begin{lstlisting}
+CREATE TABLE COLLAUDO (
+  IDREPARTO NUMBER PRIMARY KEY,
+  ESITO NUMBER(1,0),
+  NMACCHINE NUMBER NOT NULL,
+  IDPROG NUMBER,
+  CONSTRAINT UK_IDPROG UNIQUE (IDPROG),
+  FOREIGN KEY (IDPROG) REFERENCES PROGETTO(IDPROG),
+  FOREIGN KEY (IDREPARTO) REFERENCES REPARTO(IDREPARTO)
+);
+    \end{lstlisting}
+    \subsubsection{Magazzino}
+    \begin{lstlisting}
+CREATE TABLE MAGAZZINO (
+  IDREPARTO NUMBER PRIMARY KEY,
+  SPAZIOTOT NUMBER NOT NULL,
+  FOREIGN KEY (IDREPARTO) REFERENCES REPARTO(IDREPARTO)
+);
+    \end{lstlisting}
+    \subsubsection{Immagazzinamento}
+
+    \begin{lstlisting}
+CREATE TABLE IMMAGAZZINAMENTO (
+  IDLOTTO number NOT NULL,
+  ORARIO DATE NOT NULL,
+  DATAIMM DATE NOT NULL,
+  QUANTITA NUMBER NOT NULL,
+  PARTITAIVA CHAR(11) NOT NULL,
+  IDREPARTO NUMBER NOT NULL,
+  PRIMARY KEY (IDLOTTO),
+  CONSTRAINT FK_IMMAGAZZINAMENTO1 FOREIGN KEY (PARTITAIVA) REFERENCES FORNITORE (PARTITAIVA),
+  CONSTRAINT FK_IMMAGAZZINAMENTO3 FOREIGN KEY (IDREPARTO) REFERENCES MAGAZZINO (IDREPARTO)
+);
+    \end{lstlisting}
+    \subsubsection{Dipendente}
+    \begin{lstlisting}
+CREATE TABLE DIPENDENTE (
+  IDDIPENDENTE NUMBER PRIMARY KEY,
+  NOME VARCHAR2(30) NOT NULL,
+  COGNOME VARCHAR2(30) NOT NULL,
+  RAL NUMBER NOT NULL,
+  TIPODIPENDENTE VARCHAR(20) NOT NULL 
+);
+    \end{lstlisting}
+    \subsubsection{Turno}
+    \begin{lstlisting}
+CREATE TABLE TURNO (
+  IDDIPENDENTE NUMBER NOT NULL,
+  IDREPARTO NUMBER NOT NULL,
+  ORAINIZIO DATE NOT NULL,
+  ORAFINE DATE,
+  CONSTRAINT FK_TURNO_DIPENDENTE FOREIGN KEY (IDDIPENDENTE)
+    REFERENCES DIPENDENTE (IDDIPENDENTE),
+  CONSTRAINT FK_TURNO_REPARTO FOREIGN KEY (IDREPARTO)
+    REFERENCES REPARTO (IDREPARTO)
+);
+    \end{lstlisting}
+    
+\newpage
+    \subsection{Data Manipulation Language}
+    \subsubsection{Popolamento tabella Cliente}
+    \begin{lstlisting}
+  INSERT INTO CLIENTE (IDCLIENTE, NOME, COGNOME, EMAIL, TELEFONO)
+VALUES(1, 'Mario', 'Rossi', 'mario@email.com', 123456789);
+  INSERT INTO CLIENTE (IDCLIENTE, NOME, COGNOME, EMAIL, TELEFONO)
+VALUES(2, 'Laura', 'Bianchi', 'laura@email.com', 987654321);
+  INSERT INTO CLIENTE (IDCLIENTE, NOME, COGNOME, EMAIL, TELEFONO)
+VALUES(3, 'Luigi', 'Verdi', 'luigi@email.com', 555555555);
+  INSERT INTO CLIENTE (IDCLIENTE, NOME, COGNOME, EMAIL, TELEFONO)
+VALUES(4, 'Giovanna', 'Ferrari', 'giovanna@email.com', 111111111);
+  INSERT INTO CLIENTE (IDCLIENTE, NOME, COGNOME, EMAIL, TELEFONO)
+VALUES(5, 'Roberto', 'Russo', 'roberto@email.com', 999989999);
+  INSERT INTO CLIENTE (IDCLIENTE, NOME, COGNOME, EMAIL, TELEFONO)
+VALUES(6, 'Chiara', 'Romano', 'chiara@email.com', 777777777);
+ INSERT INTO CLIENTE (IDCLIENTE, NOME, COGNOME, EMAIL, TELEFONO)
+VALUES (7, 'Alessandro', 'Gallo', 'alessandro@email.com', 444444444);
+  INSERT INTO CLIENTE (IDCLIENTE, NOME, COGNOME, EMAIL, TELEFONO)
+VALUES(8, 'Sara', 'Rizzo', 'sara@email.com', 222222222);
+ INSERT INTO CLIENTE (IDCLIENTE, NOME, COGNOME, EMAIL, TELEFONO)
+VALUES(9, 'Marco', 'Lombardi', 'marco@email.com', 888888888);
+  INSERT INTO CLIENTE (IDCLIENTE, NOME, COGNOME, EMAIL, TELEFONO)
+VALUES(10, 'Francesca', 'Moretti', 'francesca@email.com', 666666666);
+  INSERT INTO CLIENTE (IDCLIENTE, NOME, COGNOME, EMAIL, TELEFONO)
+VALUES(11, 'Antonio', 'Conti', 'antonio@email.com', 333332333);
+  INSERT INTO CLIENTE (IDCLIENTE, NOME, COGNOME, EMAIL, TELEFONO)
+VALUES(12, 'Valeria', 'Marchetti', 'valeria@email.com', 555555855);
+  INSERT INTO CLIENTE (IDCLIENTE, NOME, COGNOME, EMAIL, TELEFONO)
+VALUES(13, 'Giovanni', 'Santoro', 'giovanni@email.com', 777677777);
+  INSERT INTO CLIENTE (IDCLIENTE, NOME, COGNOME, EMAIL, TELEFONO)
+VALUES(14, 'Elena', 'Gatti', 'elena@email.com', 999999959);
+  INSERT INTO CLIENTE (IDCLIENTE, NOME, COGNOME, EMAIL, TELEFONO)
+VALUES(15, 'Fabio', 'Pellegrini', 'fabio@email.com', 111711111);
+    \end{lstlisting}
+    \subsubsection{Popolamento tabella fattura}
+\begin{lstlisting}
+/*Popolamento tabella fattura*/
+INSERT INTO FATTURA (IDFATTURA, DATAEMISSIONE, TOTALE)
+VALUES(1, TO_DATE('2023-06-01', 'YYYY-MM-DD'), 100.50);
+  INSERT INTO FATTURA (IDFATTURA, DATAEMISSIONE, TOTALE)
+VALUES(2, TO_DATE('2023-06-02', 'YYYY-MM-DD'), 75.20);
+  INSERT INTO FATTURA (IDFATTURA, DATAEMISSIONE, TOTALE)
+VALUES(3, TO_DATE('2023-06-03', 'YYYY-MM-DD'), 150.00);
+  INSERT INTO FATTURA (IDFATTURA, DATAEMISSIONE, TOTALE)
+VALUES(4, TO_DATE('2023-06-04', 'YYYY-MM-DD'), 50.80);
+  INSERT INTO FATTURA (IDFATTURA, DATAEMISSIONE, TOTALE)
+VALUES(5, TO_DATE('2023-06-05', 'YYYY-MM-DD'), 90.10);
+  INSERT INTO FATTURA (IDFATTURA, DATAEMISSIONE, TOTALE)
+VALUES(6, TO_DATE('2023-06-06', 'YYYY-MM-DD'), 120.75);
+  INSERT INTO FATTURA (IDFATTURA, DATAEMISSIONE, TOTALE)
+VALUES(7, TO_DATE('2023-06-07', 'YYYY-MM-DD'), 80.30);
+ INSERT INTO FATTURA (IDFATTURA, DATAEMISSIONE, TOTALE)
+VALUES (8, TO_DATE('2023-06-08', 'YYYY-MM-DD'), 65.50);
+ INSERT INTO FATTURA (IDFATTURA, DATAEMISSIONE, TOTALE)
+VALUES (9, TO_DATE('2023-06-09', 'YYYY-MM-DD'), 95.40);
+INSERT INTO FATTURA (IDFATTURA, DATAEMISSIONE, TOTALE)
+VALUES  (10, TO_DATE('2023-06-10', 'YYYY-MM-DD'), 110.00);
+ INSERT INTO FATTURA (IDFATTURA, DATAEMISSIONE, TOTALE)
+VALUES (11, TO_DATE('2023-06-11', 'YYYY-MM-DD'), 70.25);
+ INSERT INTO FATTURA (IDFATTURA, DATAEMISSIONE, TOTALE)
+VALUES (12, TO_DATE('2023-06-12', 'YYYY-MM-DD'), 130.80);
+ INSERT INTO FATTURA (IDFATTURA, DATAEMISSIONE, TOTALE)
+VALUES (13, TO_DATE('2023-06-13', 'YYYY-MM-DD'), 85.90);
+ INSERT INTO FATTURA (IDFATTURA, DATAEMISSIONE, TOTALE)
+VALUES (14, TO_DATE('2023-06-14', 'YYYY-MM-DD'), 45.60);
+ INSERT INTO FATTURA (IDFATTURA, DATAEMISSIONE, TOTALE)
+VALUES (15, TO_DATE('2023-06-15', 'YYYY-MM-DD'), 105.15);
+
+\end{lstlisting}
+
+\subsubsection{Popolamento tabella spedizione}
+\begin{lstlisting}
+    
+/*Popolamento tabella spedizione*/
+INSERT INTO SPEDIZIONE (IDSPEDIZIONE, TEL, NOME, COGNOME, VIA, CITTA, CAP)
+VALUES(1, 123456789, 'Mario', 'Rossi', 'Via Roma 1', 'Milano', 20121);
+  INSERT INTO SPEDIZIONE (IDSPEDIZIONE, TEL, NOME, COGNOME, VIA, CITTA, CAP)
+VALUES(2, 987654321, 'Laura', 'Bianchi', 'Via Verdi 5', 'Roma', 00185);
+  INSERT INTO SPEDIZIONE (IDSPEDIZIONE, TEL, NOME, COGNOME, VIA, CITTA, CAP)
+VALUES(3, 555555555, 'Luigi', 'Verdi', 'Via Garibaldi 10', 'Napoli', 80100);
+  INSERT INTO SPEDIZIONE (IDSPEDIZIONE, TEL, NOME, COGNOME, VIA, CITTA, CAP)
+VALUES(4, 111111111, 'Giovanna', 'Ferrari', 'Via Mazzini 3', 'Firenze', 50123);
+  INSERT INTO SPEDIZIONE (IDSPEDIZIONE, TEL, NOME, COGNOME, VIA, CITTA, CAP)
+VALUES(5, 999999999, 'Roberto', 'Russo', 'Via Libertà 8', 'Palermo', 90100);
+  INSERT INTO SPEDIZIONE (IDSPEDIZIONE, TEL, NOME, COGNOME, VIA, CITTA, CAP)
+VALUES(6, 777777777, 'Chiara', 'Romano', 'Via Manzoni 12', 'Torino', 10100);
+  INSERT INTO SPEDIZIONE (IDSPEDIZIONE, TEL, NOME, COGNOME, VIA, CITTA, CAP)
+VALUES(7, 444444444, 'Alessandro', 'Gallo', 'Via Dante 7', 'Bologna', 40100);
+  INSERT INTO SPEDIZIONE (IDSPEDIZIONE, TEL, NOME, COGNOME, VIA, CITTA, CAP)
+VALUES(8, 222222222, 'Sara', 'Rizzo', 'Via Cavour 15', 'Genova', 16100);
+  INSERT INTO SPEDIZIONE (IDSPEDIZIONE, TEL, NOME, COGNOME, VIA, CITTA, CAP)
+VALUES(9, 888888888, 'Marco', 'Lombardi', 'Via Milano 4', 'Bari', 70100);
+  INSERT INTO SPEDIZIONE (IDSPEDIZIONE, TEL, NOME, COGNOME, VIA, CITTA, CAP)
+VALUES(10, 666666666, 'Francesca', 'Moretti', 'Via Carducci 6', 'Verona', 37100);
+  INSERT INTO SPEDIZIONE (IDSPEDIZIONE, TEL, NOME, COGNOME, VIA, CITTA, CAP)
+VALUES(11, 333333333, 'Antonio', 'Conti', 'Via Garibaldi 20', 'Trieste', 34100);
+  INSERT INTO SPEDIZIONE (IDSPEDIZIONE, TEL, NOME, COGNOME, VIA, CITTA, CAP)
+VALUES(12, 555555555, 'Valeria', 'Marchetti', 'Via Mazzini 3', 'Padova', 35100);
+  INSERT INTO SPEDIZIONE (IDSPEDIZIONE, TEL, NOME, COGNOME, VIA, CITTA, CAP)
+VALUES(13, 777777777, 'Giovanni', 'Santoro', 'Via Leopardi 9', 'Perugia', 06100);
+  INSERT INTO SPEDIZIONE (IDSPEDIZIONE, TEL, NOME, COGNOME, VIA, CITTA, CAP)
+VALUES(14, 999999999, 'Elena', 'Gatti', 'Via Manzoni 18', 'Cagliari', 09100);
+  INSERT INTO SPEDIZIONE (IDSPEDIZIONE, TEL, NOME, COGNOME, VIA, CITTA, CAP)
+VALUES(15, 111111111, 'Fabio', 'Pellegrini', 'Via Garibaldi 5', 'Catania', 95100);
+
+\end{lstlisting}
+
+\subsubsection{Popolamento tabella ordine}
+\begin{lstlisting}
+
+/*Popolamento tabella ordine*/
+  INSERT INTO ORDINE (IDORDINE, IDFATTURA, IDCLIENTE, IDSPEDIZIONE, NUMEROPRODOTTI, DATACREAZIONE)
+VALUES(1, 1, 1, 1, 3, TO_DATE('2023-06-01', 'YYYY-MM-DD'));
+  INSERT INTO ORDINE (IDORDINE, IDFATTURA, IDCLIENTE, IDSPEDIZIONE, NUMEROPRODOTTI, DATACREAZIONE)
+VALUES  (2, 2, 2, 2, 2, TO_DATE('2023-06-02', 'YYYY-MM-DD'));  
+  INSERT INTO ORDINE (IDORDINE, IDFATTURA, IDCLIENTE, IDSPEDIZIONE, NUMEROPRODOTTI, DATACREAZIONE)
+VALUES(3, 3, 3, 3, 1, TO_DATE('2023-06-03', 'YYYY-MM-DD'));
+  INSERT INTO ORDINE (IDORDINE, IDFATTURA, IDCLIENTE, IDSPEDIZIONE, NUMEROPRODOTTI, DATACREAZIONE)
+VALUES(4, 4, 4, 4, 4, TO_DATE('2023-06-04', 'YYYY-MM-DD'));
+  INSERT INTO ORDINE (IDORDINE, IDFATTURA, IDCLIENTE, IDSPEDIZIONE, NUMEROPRODOTTI, DATACREAZIONE)
+VALUES(5, 5, 5, 5, 2, TO_DATE('2023-06-05', 'YYYY-MM-DD'));
+  INSERT INTO ORDINE (IDORDINE, IDFATTURA, IDCLIENTE, IDSPEDIZIONE, NUMEROPRODOTTI, DATACREAZIONE)
+VALUES(6, 6, 6, 6, 3, TO_DATE('2023-06-06', 'YYYY-MM-DD'));
+  INSERT INTO ORDINE (IDORDINE, IDFATTURA, IDCLIENTE, IDSPEDIZIONE, NUMEROPRODOTTI, DATACREAZIONE)
+VALUES(7, 7, 7, 7, 2, TO_DATE('2023-06-07', 'YYYY-MM-DD'));
+  INSERT INTO ORDINE (IDORDINE, IDFATTURA, IDCLIENTE, IDSPEDIZIONE, NUMEROPRODOTTI, DATACREAZIONE)
+VALUES(8, 8, 8, 8, 1, TO_DATE('2023-06-08', 'YYYY-MM-DD'));
+  INSERT INTO ORDINE (IDORDINE, IDFATTURA, IDCLIENTE, IDSPEDIZIONE, NUMEROPRODOTTI, DATACREAZIONE)
+VALUES(9, 9, 9, 9, 4, TO_DATE('2023-06-09', 'YYYY-MM-DD'));
+  INSERT INTO ORDINE (IDORDINE, IDFATTURA, IDCLIENTE, IDSPEDIZIONE, NUMEROPRODOTTI, DATACREAZIONE)
+VALUES(10, 10, 10, 10, 3, TO_DATE('2023-06-10', 'YYYY-MM-DD'));
+  INSERT INTO ORDINE (IDORDINE, IDFATTURA, IDCLIENTE, IDSPEDIZIONE, NUMEROPRODOTTI, DATACREAZIONE)
+VALUES(11, 11, 11, 11, 2, TO_DATE('2023-06-11', 'YYYY-MM-DD'));
+  INSERT INTO ORDINE (IDORDINE, IDFATTURA, IDCLIENTE, IDSPEDIZIONE, NUMEROPRODOTTI, DATACREAZIONE)
+VALUES(12, 12, 12, 12, 1, TO_DATE('2023-06-12', 'YYYY-MM-DD'));
+  INSERT INTO ORDINE (IDORDINE, IDFATTURA, IDCLIENTE, IDSPEDIZIONE, NUMEROPRODOTTI, DATACREAZIONE)
+VALUES(13, 13, 13, 13, 4, TO_DATE('2023-06-13', 'YYYY-MM-DD'));
+  INSERT INTO ORDINE (IDORDINE, IDFATTURA, IDCLIENTE, IDSPEDIZIONE, NUMEROPRODOTTI, DATACREAZIONE)
+VALUES(14, 14, 14, 14, 2, TO_DATE('2023-06-14', 'YYYY-MM-DD'));
+  INSERT INTO ORDINE (IDORDINE, IDFATTURA, IDCLIENTE, IDSPEDIZIONE, NUMEROPRODOTTI, DATACREAZIONE)
+VALUES(15, 15, 15, 15, 3, TO_DATE('2023-06-15', 'YYYY-MM-DD'));
+
+\end{lstlisting}
+\subsubsection{Popolamento tabella componente}
+\begin{lstlisting}
+
+/*Popolamento tabella componente*/
+  INSERT INTO COMPONENTE (EAN, NOME, PREZZO) 
+VALUES(1001, 'Componente 1', 10.99);
+  INSERT INTO COMPONENTE (EAN, NOME, PREZZO) 
+VALUES(1002, 'Componente 2', 12.99);
+  INSERT INTO COMPONENTE (EAN, NOME, PREZZO)
+VALUES(1003, 'Componente 3', 8.99);
+  INSERT INTO COMPONENTE (EAN, NOME, PREZZO)
+VALUES(1004, 'Componente 4', 14.99);
+  INSERT INTO COMPONENTE (EAN, NOME, PREZZO)
+VALUES(1005, 'Componente 5', 9.99);
+  INSERT INTO COMPONENTE (EAN, NOME, PREZZO)
+VALUES(1006, 'Componente 6', 11.99);
+  INSERT INTO COMPONENTE (EAN, NOME, PREZZO)
+VALUES(1007, 'Componente 7', 13.99);
+  INSERT INTO COMPONENTE (EAN, NOME, PREZZO)
+VALUES(1008, 'Componente 8', 7.99);
+  INSERT INTO COMPONENTE (EAN, NOME, PREZZO)
+VALUES(1009, 'Componente 9', 16.99);
+  INSERT INTO COMPONENTE (EAN, NOME, PREZZO)
+VALUES(1010, 'Componente 10', 10.49);
+  INSERT INTO COMPONENTE (EAN, NOME, PREZZO)
+VALUES(1011, 'Componente 11', 9.49);
+  INSERT INTO COMPONENTE (EAN, NOME, PREZZO)
+VALUES(1012, 'Componente 12', 15.99);
+  INSERT INTO COMPONENTE (EAN, NOME, PREZZO)
+VALUES(1013, 'Componente 13', 11.49);
+  INSERT INTO COMPONENTE (EAN, NOME, PREZZO)
+VALUES(1014, 'Componente 14', 8.49);
+  INSERT INTO COMPONENTE (EAN, NOME, PREZZO)
+VALUES(1015, 'Componente 15', 13.49);
+
+\end{lstlisting}
+
+\subsubsection{Popolamento tabella progetto}
+\begin{lstlisting}
+
+/*Popolamento tabella progetto*/
+INSERT INTO PROGETTO (IDPROG, NOME, DATAINIZIO)
+VALUES(1, 'Progetto 1', TO_DATE('2023-01-01', 'YYYY-MM-DD'));
+  INSERT INTO PROGETTO (IDPROG, NOME, DATAINIZIO)
+VALUES(2, 'Progetto 2', TO_DATE('2023-02-01', 'YYYY-MM-DD'));
+  INSERT INTO PROGETTO (IDPROG, NOME, DATAINIZIO)
+VALUES(3, 'Progetto 3', TO_DATE('2023-03-01', 'YYYY-MM-DD'));
+  INSERT INTO PROGETTO (IDPROG, NOME, DATAINIZIO)
+VALUES(4, 'Progetto 4', TO_DATE('2023-04-01', 'YYYY-MM-DD'));
+ INSERT INTO PROGETTO (IDPROG, NOME, DATAINIZIO)
+VALUES(5, 'Progetto 5', TO_DATE('2023-05-01', 'YYYY-MM-DD'));
+  INSERT INTO PROGETTO (IDPROG, NOME, DATAINIZIO)
+VALUES(6, 'Progetto 6', TO_DATE('2023-06-01', 'YYYY-MM-DD'));
+  INSERT INTO PROGETTO (IDPROG, NOME, DATAINIZIO)
+VALUES(7, 'Progetto 7', TO_DATE('2023-07-01', 'YYYY-MM-DD'));
+  INSERT INTO PROGETTO (IDPROG, NOME, DATAINIZIO)
+VALUES(8, 'Progetto 8', TO_DATE('2023-08-01', 'YYYY-MM-DD'));
+  INSERT INTO PROGETTO (IDPROG, NOME, DATAINIZIO)
+VALUES(9, 'Progetto 9', TO_DATE('2023-09-01', 'YYYY-MM-DD'));
+  INSERT INTO PROGETTO (IDPROG, NOME, DATAINIZIO)
+VALUES(10, 'Progetto 10', TO_DATE('2023-10-01', 'YYYY-MM-DD'));
+  INSERT INTO PROGETTO (IDPROG, NOME, DATAINIZIO)
+VALUES  (11, 'Progetto 11', TO_DATE('2023-11-01', 'YYYY-MM-DD'));
+  INSERT INTO PROGETTO (IDPROG, NOME, DATAINIZIO)
+VALUES(12, 'Progetto 12', TO_DATE('2023-12-01', 'YYYY-MM-DD'));
+  INSERT INTO PROGETTO (IDPROG, NOME, DATAINIZIO)
+VALUES(13, 'Progetto 13', TO_DATE('2024-01-01', 'YYYY-MM-DD'));
+  INSERT INTO PROGETTO (IDPROG, NOME, DATAINIZIO)
+VALUES(14, 'Progetto 14', TO_DATE('2024-02-01', 'YYYY-MM-DD'));
+  INSERT INTO PROGETTO (IDPROG, NOME, DATAINIZIO)
+VALUES(15, 'Progetto 15', TO_DATE('2024-03-01', 'YYYY-MM-DD'));
+
+\end{lstlisting}
+
+\subsubsection{Popolamento tabella componentiProgetto}
+\begin{lstlisting}
+  
+/*Popolamento tabella componentiprogetto*/                                               
+  INSERT INTO COMPONENTIPROGETTO (IDPROG, EAN, QUANTITA) VALUES  (1, 1001, 2);
+  INSERT INTO COMPONENTIPROGETTO (IDPROG, EAN, QUANTITA) VALUES  (1, 1002, 1);
+  INSERT INTO COMPONENTIPROGETTO (IDPROG, EAN, QUANTITA) VALUES  (1, 1003, 3);
+  INSERT INTO COMPONENTIPROGETTO (IDPROG, EAN, QUANTITA) VALUES  (2, 1001, 4);
+  INSERT INTO COMPONENTIPROGETTO (IDPROG, EAN, QUANTITA) VALUES  (2, 1004, 2);
+  INSERT INTO COMPONENTIPROGETTO (IDPROG, EAN, QUANTITA) VALUES  (3, 1002, 2);
+  INSERT INTO COMPONENTIPROGETTO (IDPROG, EAN, QUANTITA) VALUES  (3, 1005, 1);
+  INSERT INTO COMPONENTIPROGETTO (IDPROG, EAN, QUANTITA) VALUES  (4, 1003, 3);
+  INSERT INTO COMPONENTIPROGETTO (IDPROG, EAN, QUANTITA) VALUES  (5, 1001, 2);
+  INSERT INTO COMPONENTIPROGETTO (IDPROG, EAN, QUANTITA) VALUES  (5, 1004, 1);
+  INSERT INTO COMPONENTIPROGETTO (IDPROG, EAN, QUANTITA) VALUES  (6, 1002, 3);
+  INSERT INTO COMPONENTIPROGETTO (IDPROG, EAN, QUANTITA) VALUES  (7, 1005, 2);
+  INSERT INTO COMPONENTIPROGETTO (IDPROG, EAN, QUANTITA) VALUES  (8, 1001, 1);
+  INSERT INTO COMPONENTIPROGETTO (IDPROG, EAN, QUANTITA) VALUES  (9, 1001, 3);
+  INSERT INTO COMPONENTIPROGETTO (IDPROG, EAN, QUANTITA) VALUES  (10, 1003, 2); 
+
+  \end{lstlisting}
+
+\subsubsection{Popolamento tabella contiene}
+\begin{lstlisting}
+
+/*Popolamento tabella contiene*/
+  INSERT INTO CONTIENE (IDPROG, IDORDINE, QUANTITA) VALUES (1, 1, 2);
+  INSERT INTO CONTIENE (IDPROG, IDORDINE, QUANTITA) VALUES (1, 2, 1);
+  INSERT INTO CONTIENE (IDPROG, IDORDINE, QUANTITA) VALUES  (2, 3, 3);
+  INSERT INTO CONTIENE (IDPROG, IDORDINE, QUANTITA) VALUES(2, 4, 4);
+  INSERT INTO CONTIENE (IDPROG, IDORDINE, QUANTITA) VALUES(3, 5, 2);
+  INSERT INTO CONTIENE (IDPROG, IDORDINE, QUANTITA) VALUES(3, 6, 1);
+  INSERT INTO CONTIENE (IDPROG, IDORDINE, QUANTITA) VALUES(4, 7, 3);
+  INSERT INTO CONTIENE (IDPROG, IDORDINE, QUANTITA) VALUES(4, 8, 2);
+  INSERT INTO CONTIENE (IDPROG, IDORDINE, QUANTITA) VALUES(5, 9, 1);
+  INSERT INTO CONTIENE (IDPROG, IDORDINE, QUANTITA) VALUES(5, 10, 2);
+  INSERT INTO CONTIENE (IDPROG, IDORDINE, QUANTITA) VALUES(6, 11, 3);
+  INSERT INTO CONTIENE (IDPROG, IDORDINE, QUANTITA) VALUES(7, 12, 2);
+  INSERT INTO CONTIENE (IDPROG, IDORDINE, QUANTITA) VALUES(8, 13, 1);
+  INSERT INTO CONTIENE (IDPROG, IDORDINE, QUANTITA) VALUES(9, 14, 4);
+  INSERT INTO CONTIENE (IDPROG, IDORDINE, QUANTITA) VALUES(10, 15, 3);
+
+  \end{lstlisting}
+
+\subsubsection{Popolamento tabella fornitore}
+\begin{lstlisting}
+    
+/*Popolamento tabella fornitore*/
+  INSERT INTO FORNITORE (PARTITAIVA, VIA, CIVICO, CITTA, CAP, TEL)
+VALUES ('12345678901', 'Via Roma', 10, 'Milano', 20100, '0123456789');
+  INSERT INTO FORNITORE (PARTITAIVA, VIA, CIVICO, CITTA, CAP, TEL)
+VALUES  ('23456789012', 'Via Verdi', 20, 'Roma', 00100, '0234567890');
+  INSERT INTO FORNITORE (PARTITAIVA, VIA, CIVICO, CITTA, CAP, TEL)
+VALUES ('34567890123', 'Via Italia', 30, 'Napoli', 80100, '0345678901');
+  INSERT INTO FORNITORE (PARTITAIVA, VIA, CIVICO, CITTA, CAP, TEL)
+VALUES('45678901234', 'Via Firenze', 40, 'Torino', 10100, '0456789012');
+  INSERT INTO FORNITORE (PARTITAIVA, VIA, CIVICO, CITTA, CAP, TEL)
+VALUES('56789012345', 'Via Venezia', 50, 'Firenze', 50100, '0567890123');
+  INSERT INTO FORNITORE (PARTITAIVA, VIA, CIVICO, CITTA, CAP, TEL)
+VALUES('67890123456', 'Via Bologna', 60, 'Palermo', 90100, '0678901234');
+  INSERT INTO FORNITORE (PARTITAIVA, VIA, CIVICO, CITTA, CAP, TEL)
+VALUES('78901234567', 'Via Genova', 70, 'Genova', 16100, '0789012345');
+  INSERT INTO FORNITORE (PARTITAIVA, VIA, CIVICO, CITTA, CAP, TEL)
+VALUES('89012345678', 'Via Milano', 80, 'Bologna', 40100, '0890123456');
+  INSERT INTO FORNITORE (PARTITAIVA, VIA, CIVICO, CITTA, CAP, TEL)
+VALUES('90123456789', 'Via Napoli', 90, 'Verona', 37100, '0901234567');
+  INSERT INTO FORNITORE (PARTITAIVA, VIA, CIVICO, CITTA, CAP, TEL)
+VALUES('01234567890', 'Via Torino', 100, 'Venezia', 30100, '0012345678');
+  INSERT INTO FORNITORE (PARTITAIVA, VIA, CIVICO, CITTA, CAP, TEL)
+VALUES('11223344556', 'Via Palermo', 110, 'Cagliari', 90100, '1122334455');
+  INSERT INTO FORNITORE (PARTITAIVA, VIA, CIVICO, CITTA, CAP, TEL)
+VALUES('22334455667', 'Via Genova', 120, 'Napoli', 80100, '2233445566');
+  INSERT INTO FORNITORE (PARTITAIVA, VIA, CIVICO, CITTA, CAP, TEL)
+VALUES('33445566778', 'Via Firenze', 130, 'Milano', 20100, '3344556677');
+ INSERT INTO FORNITORE (PARTITAIVA, VIA, CIVICO, CITTA, CAP, TEL)
+VALUES ('44556677889', 'Via Roma', 140, 'Roma', 00100, '4455667788');
+  INSERT INTO FORNITORE (PARTITAIVA, VIA, CIVICO, CITTA, CAP, TEL)
+VALUES('55667788990', 'Via Verdi', 150, 'Torino', 10100, '5566778899');
+
+\end{lstlisting}
+
+\subsubsection{Popolamento tabella fornitura}
+\begin{lstlisting}
+ 
+/*Popolamento tabella fornitura*/
+INSERT INTO FORNITURA (PARTITAIVAFORNITORE, EANCOMPONENTE, QUANTITA, DATAACQUISTO) 
+VALUES ('12345678901', 1001, 5, TO_DATE('2023-06-01', 'YYYY-MM-DD'));
+INSERT INTO FORNITURA (PARTITAIVAFORNITORE, EANCOMPONENTE, QUANTITA, DATAACQUISTO) 
+VALUES ('23456789012', 1002, 3, TO_DATE('2023-06-02', 'YYYY-MM-DD'));
+INSERT INTO FORNITURA (PARTITAIVAFORNITORE, EANCOMPONENTE, QUANTITA, DATAACQUISTO) 
+VALUES ('34567890123', 1003, 7, TO_DATE('2023-06-03', 'YYYY-MM-DD'));
+INSERT INTO FORNITURA (PARTITAIVAFORNITORE, EANCOMPONENTE, QUANTITA, DATAACQUISTO) 
+VALUES ('45678901234', 1004, 4, TO_DATE('2023-06-04', 'YYYY-MM-DD'));
+INSERT INTO FORNITURA (PARTITAIVAFORNITORE, EANCOMPONENTE, QUANTITA, DATAACQUISTO) 
+VALUES ('56789012345', 1005, 10, TO_DATE('2023-06-05', 'YYYY-MM-DD'));
+INSERT INTO FORNITURA (PARTITAIVAFORNITORE, EANCOMPONENTE, QUANTITA, DATAACQUISTO) 
+VALUES ('67890123456', 1006, 6, TO_DATE('2023-06-06', 'YYYY-MM-DD'));
+INSERT INTO FORNITURA (PARTITAIVAFORNITORE, EANCOMPONENTE, QUANTITA, DATAACQUISTO) 
+VALUES ('78901234567', 1007, 2, TO_DATE('2023-06-07', 'YYYY-MM-DD'));
+INSERT INTO FORNITURA (PARTITAIVAFORNITORE, EANCOMPONENTE, QUANTITA, DATAACQUISTO) 
+VALUES ('89012345678', 1008, 8, TO_DATE('2023-06-08', 'YYYY-MM-DD'));
+INSERT INTO FORNITURA (PARTITAIVAFORNITORE, EANCOMPONENTE, QUANTITA, DATAACQUISTO) 
+VALUES ('90123456789', 1009, 9, TO_DATE('2023-06-09', 'YYYY-MM-DD'));
+INSERT INTO FORNITURA (PARTITAIVAFORNITORE, EANCOMPONENTE, QUANTITA, DATAACQUISTO) 
+VALUES ('01234567890', 1010, 7, TO_DATE('2023-06-10', 'YYYY-MM-DD'));
+INSERT INTO FORNITURA (PARTITAIVAFORNITORE, EANCOMPONENTE, QUANTITA, DATAACQUISTO) 
+VALUES ('11223344556', 1011, 3, TO_DATE('2023-06-11', 'YYYY-MM-DD'));
+INSERT INTO FORNITURA (PARTITAIVAFORNITORE, EANCOMPONENTE, QUANTITA, DATAACQUISTO) 
+VALUES ('22334455667', 1012, 6, TO_DATE('2023-06-12', 'YYYY-MM-DD'));
+INSERT INTO FORNITURA (PARTITAIVAFORNITORE, EANCOMPONENTE, QUANTITA, DATAACQUISTO) 
+VALUES ('33445566778', 1013, 4, TO_DATE('2023-06-13', 'YYYY-MM-DD'));
+INSERT INTO FORNITURA (PARTITAIVAFORNITORE, EANCOMPONENTE, QUANTITA, DATAACQUISTO) 
+VALUES ('44556677889', 1014, 10, TO_DATE('2023-06-14', 'YYYY-MM-DD'));
+INSERT INTO FORNITURA (PARTITAIVAFORNITORE, EANCOMPONENTE, QUANTITA, DATAACQUISTO) 
+VALUES ('55667788990', 1015, 8, TO_DATE('2023-06-15', 'YYYY-MM-DD'));
+\end{lstlisting}
+
+\subsubsection{Popolamento tabella reparto}
+\begin{lstlisting}
+    
+/*Popolamento tabella reparto*/
+INSERT INTO REPARTO (IDREPARTO, TELEFONO, DIPENDENTIMAX) VALUES
+(1, '1234567890', 5);
+INSERT INTO REPARTO (IDREPARTO, TELEFONO, DIPENDENTIMAX) VALUES
+(2, '9876543210', 5);
+INSERT INTO REPARTO (IDREPARTO, TELEFONO, DIPENDENTIMAX) VALUES
+(3, '1111111111', 5);
+INSERT INTO REPARTO (IDREPARTO, TELEFONO, DIPENDENTIMAX) VALUES
+(4, '2222222222', 5);
+INSERT INTO REPARTO (IDREPARTO, TELEFONO, DIPENDENTIMAX) VALUES
+(5, '3333333333', 5);
+INSERT INTO REPARTO (IDREPARTO, TELEFONO, DIPENDENTIMAX) VALUES
+(6, '4444444444', 5);
+INSERT INTO REPARTO (IDREPARTO, TELEFONO, DIPENDENTIMAX) VALUES
+(7, '5555555555', 5);
+INSERT INTO REPARTO (IDREPARTO, TELEFONO, DIPENDENTIMAX) VALUES
+(8, '6666666666', 5);
+INSERT INTO REPARTO (IDREPARTO, TELEFONO, DIPENDENTIMAX) VALUES
+(9, '7777777777', 5);
+INSERT INTO REPARTO (IDREPARTO, TELEFONO, DIPENDENTIMAX) VALUES
+(10, '8888888888',5);
+INSERT INTO REPARTO (IDREPARTO, TELEFONO, DIPENDENTIMAX) VALUES
+(11, '9999999999',5);
+INSERT INTO REPARTO (IDREPARTO, TELEFONO, DIPENDENTIMAX) VALUES
+(12, '1010101010',5);
+INSERT INTO REPARTO (IDREPARTO, TELEFONO, DIPENDENTIMAX) VALUES
+(13, '1212121212',5);
+INSERT INTO REPARTO (IDREPARTO, TELEFONO, DIPENDENTIMAX) VALUES
+(14, '1313131313',5);
+INSERT INTO REPARTO (IDREPARTO, TELEFONO, DIPENDENTIMAX) VALUES
+(15, '1414141414',5);
+INSERT INTO REPARTO (IDREPARTO, TELEFONO, DIPENDENTIMAX) VALUES
+(16, '1515151515',5);
+
+\end{lstlisting}
+\subsubsection{Popolamento tabella progettazione}
+\begin{lstlisting}
+
+/*Popolamento tabella progettazione*/
+INSERT INTO PROGETTAZIONE (IDREPARTO, STATOPROTOTIPO, STIMATEMPO, STIMAEFFORT, IDPROG) VALUES
+(1,   NULL, 40, 120, 1);
+INSERT INTO PROGETTAZIONE (IDREPARTO,   STATOPROTOTIPO, STIMATEMPO, STIMAEFFORT, IDPROG) VALUES
+(2,   NULL, 25, 80, 2);
+INSERT INTO PROGETTAZIONE (IDREPARTO,   STATOPROTOTIPO, STIMATEMPO, STIMAEFFORT, IDPROG) VALUES
+(3,   NULL, 30, 90, 3);
+INSERT INTO PROGETTAZIONE (IDREPARTO,   STATOPROTOTIPO, STIMATEMPO, STIMAEFFORT, IDPROG) VALUES
+(4,   NULL, 20, 60, 4);
+\end{lstlisting}
+
+\subsubsection{Popolamento tabella collaudo}
+\begin{lstlisting}
+/*Popolamento tabella collaudo*/
+INSERT INTO COLLAUDO(IDREPARTO, ESITO,NMACCHINE) VALUES 
+(9,NULL,12);
+INSERT INTO COLLAUDO(IDREPARTO,  ESITO,NMACCHINE) VALUES 
+(10,NULL,32);
+INSERT INTO COLLAUDO(IDREPARTO,  ESITO,NMACCHINE) VALUES 
+(11,NULL,22);
+INSERT INTO COLLAUDO(IDREPARTO,  ESITO,NMACCHINE) VALUES 
+(12,NULL,15);
+
+\end{lstlisting}
+\begin{lstlisting}
+    
+/*Popolamento tabella produzione*/
+INSERT INTO produzione (IDREPARTO,  STATO,NMACCHINE) VALUES
+(5,  NULL,12);
+INSERT INTO produzione (IDREPARTO,  STATO,NMACCHINE) VALUES
+(6,  NULL,16);
+INSERT INTO produzione (IDREPARTO,  STATO,NMACCHINE) VALUES
+(7,  NULL,17);
+INSERT INTO produzione (IDREPARTO,  STATO,NMACCHINE) VALUES
+(8,  NULL,21);
+
+\end{lstlisting}
+
+\subsubsection{Popolamento tabella magazzino}
+\begin{lstlisting}
+
+/*Popolamento tabella magazzino*/
+INSERT INTO MAGAZZINO(IDREPARTO, SPAZIOTOT) VALUES
+ (13,50);
+INSERT INTO MAGAZZINO(IDREPARTO, SPAZIOTOT) VALUES
+ (14,50);
+INSERT INTO MAGAZZINO(IDREPARTO, SPAZIOTOT) VALUES
+ (15,50);
+INSERT INTO MAGAZZINO(IDREPARTO, SPAZIOTOT) VALUES
+ (16,50);
+ \end{lstlisting}
+\subsubsection{Popolamento tabella immagazzinamento}
+\begin{lstlisting}
+
+/*Popolamento tabella immagazzinamento*/
+INSERT INTO IMMAGAZZINAMENTO (IDLOTTO, SPAZIOOCCUPATO, ORARIO, DATAIMM, QUANTITA, PARTITAIVA, EAN, IDREPARTO)
+  VALUES (1, 10, TO_DATE('2023-06-13 08:30:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-06-13', 'YYYY-MM-DD'), 50, '12345678901', 1001, 16);
+INSERT INTO IMMAGAZZINAMENTO (IDLOTTO, SPAZIOOCCUPATO, ORARIO, DATAIMM, QUANTITA, PARTITAIVA, EAN, IDREPARTO)
+  VALUES (2, 15, TO_DATE('2023-06-14 09:15:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-06-14', 'YYYY-MM-DD'), 30, '23456789012', 1002, 16);
+INSERT INTO IMMAGAZZINAMENTO (IDLOTTO, SPAZIOOCCUPATO, ORARIO, DATAIMM, QUANTITA, PARTITAIVA, EAN, IDREPARTO)
+  VALUES (3, 8, TO_DATE('2023-06-15 10:45:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-06-15', 'YYYY-MM-DD'), 20, '45678901234', 1002, 13);
+INSERT INTO IMMAGAZZINAMENTO (IDLOTTO, SPAZIOOCCUPATO, ORARIO, DATAIMM, QUANTITA, PARTITAIVA, EAN, IDREPARTO)
+  VALUES (4, 12, TO_DATE('2023-06-16 14:20:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-06-16', 'YYYY-MM-DD'), 40, '01234567890', 1004, 14);
+INSERT INTO IMMAGAZZINAMENTO (IDLOTTO, SPAZIOOCCUPATO, ORARIO, DATAIMM, QUANTITA, PARTITAIVA, EAN, IDREPARTO)
+  VALUES (5, 5, TO_DATE('2023-06-17 11:10:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-06-17', 'YYYY-MM-DD'), 10, '89012345678', 1005, 15);
+INSERT INTO IMMAGAZZINAMENTO (IDLOTTO, SPAZIOOCCUPATO, ORARIO, DATAIMM, QUANTITA, PARTITAIVA, EAN, IDREPARTO)
+  VALUES (6, 20, TO_DATE('2023-06-18 13:45:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-06-18', 'YYYY-MM-DD'), 60, '23456789012', 1007, 16);
+INSERT INTO IMMAGAZZINAMENTO (IDLOTTO, SPAZIOOCCUPATO, ORARIO, DATAIMM, QUANTITA, PARTITAIVA, EAN, IDREPARTO)
+  VALUES (7, 7, TO_DATE('2023-06-19 09:55:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-06-19', 'YYYY-MM-DD'), 15, '34567890123', 1008, 14);
+INSERT INTO IMMAGAZZINAMENTO (IDLOTTO, SPAZIOOCCUPATO, ORARIO, DATAIMM, QUANTITA, PARTITAIVA, EAN, IDREPARTO)
+  VALUES (8, 14, TO_DATE('2023-06-20 12:30:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-06-20', 'YYYY-MM-DD'), 35, '56789012345', 1014, 15);
+INSERT INTO IMMAGAZZINAMENTO (IDLOTTO, SPAZIOOCCUPATO, ORARIO, DATAIMM, QUANTITA, PARTITAIVA, EAN, IDREPARTO)
+  VALUES (9, 9, TO_DATE('2023-06-21 15:05:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-06-21', 'YYYY-MM-DD'), 25, '89012345678', 1015, 16);
+INSERT INTO IMMAGAZZINAMENTO (IDLOTTO, SPAZIOOCCUPATO, ORARIO, DATAIMM, QUANTITA, PARTITAIVA, EAN, IDREPARTO)
+  VALUES (10, 18, TO_DATE('2023-06-22 10:40:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-06-22', 'YYYY-MM-DD'), 55, '01234567890', 1010, 13);
+INSERT INTO IMMAGAZZINAMENTO (IDLOTTO, SPAZIOOCCUPATO, ORARIO, DATAIMM, QUANTITA, PARTITAIVA, EAN, IDREPARTO)
+  VALUES (11, 6, TO_DATE('2023-06-23 13:15:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-06-23', 'YYYY-MM-DD'), 12, '12345678901', 1013, 13);
+INSERT INTO IMMAGAZZINAMENTO (IDLOTTO, SPAZIOOCCUPATO, ORARIO, DATAIMM, QUANTITA, PARTITAIVA, EAN, IDREPARTO)
+  VALUES (12, 13, TO_DATE('2023-06-24 11:25:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-06-24', 'YYYY-MM-DD'), 28, '23456789012', 1015, 15);
+INSERT INTO IMMAGAZZINAMENTO (IDLOTTO, SPAZIOOCCUPATO, ORARIO, DATAIMM, QUANTITA, PARTITAIVA, EAN, IDREPARTO)
+  VALUES (13, 8, TO_DATE('2023-06-25 14:00:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-06-25', 'YYYY-MM-DD'), 18, '34567890123', 1013, 13);
+INSERT INTO IMMAGAZZINAMENTO (IDLOTTO, SPAZIOOCCUPATO, ORARIO, DATAIMM, QUANTITA, PARTITAIVA, EAN, IDREPARTO)
+  VALUES (14, 16, TO_DATE('2023-06-26 11:50:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-06-26', 'YYYY-MM-DD'), 45, '45678901234', 1008, 14);
+INSERT INTO IMMAGAZZINAMENTO (IDLOTTO, SPAZIOOCCUPATO, ORARIO, DATAIMM, QUANTITA, PARTITAIVA, EAN, IDREPARTO)
+  VALUES (15, 11, TO_DATE('2023-06-27 13:25:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-06-27', 'YYYY-MM-DD'), 33, '56789012345', 1015, 15);
+
+  \end{lstlisting}
+
+\subsubsection{Popolamento tabella dipendente}
+\begin{lstlisting}
+
+/*Popolamento tabella dipendente*/
+INSERT INTO DIPENDENTE (IDDIPENDENTE, NOME, COGNOME, RAL, TIPODIPENDENTE) VALUES (1, 'Mario', 'Rossi', 30000, 'Magazziniere');
+INSERT INTO DIPENDENTE (IDDIPENDENTE, NOME, COGNOME, RAL, TIPODIPENDENTE) VALUES (2, 'Luca', 'Bianchi', 25000, 'Operaio');
+INSERT INTO DIPENDENTE (IDDIPENDENTE, NOME, COGNOME, RAL, TIPODIPENDENTE) VALUES (3, 'Laura', 'Verdi', 35000, 'Ingegnere');
+INSERT INTO DIPENDENTE (IDDIPENDENTE, NOME, COGNOME, RAL, TIPODIPENDENTE) VALUES (4, 'Giovanni', 'Russo', 28000, 'Responsabile');
+INSERT INTO DIPENDENTE (IDDIPENDENTE, NOME, COGNOME, RAL, TIPODIPENDENTE) VALUES (5, 'Francesca', 'Esposito', 32000, 'Collaudatore');
+INSERT INTO DIPENDENTE (IDDIPENDENTE, NOME, COGNOME, RAL, TIPODIPENDENTE) VALUES (6, 'Marco', 'Romano', 27000, 'Magazziniere');
+INSERT INTO DIPENDENTE (IDDIPENDENTE, NOME, COGNOME, RAL, TIPODIPENDENTE) VALUES (7, 'Sara', 'Galli', 38000, 'Operaio'); 
+INSERT INTO DIPENDENTE (IDDIPENDENTE, NOME, COGNOME, RAL, TIPODIPENDENTE) VALUES (8, 'Paolo', 'Conti', 29000, 'Ingegnere');
+INSERT INTO DIPENDENTE (IDDIPENDENTE, NOME, COGNOME, RAL, TIPODIPENDENTE) VALUES (9, 'Alessia', 'Ferrari', 33000, 'Responsabile');
+INSERT INTO DIPENDENTE (IDDIPENDENTE, NOME, COGNOME, RAL, TIPODIPENDENTE) VALUES (10, 'Simone', 'Martini', 26000, 'Collaudatore');
+INSERT INTO DIPENDENTE (IDDIPENDENTE, NOME, COGNOME, RAL, TIPODIPENDENTE) VALUES (11, 'Valentina', 'Rizzo', 31000, 'Magazziniere');
+INSERT INTO DIPENDENTE (IDDIPENDENTE, NOME, COGNOME, RAL, TIPODIPENDENTE) VALUES (12, 'Fabio', 'Colombo', 24000, 'Operaio');
+INSERT INTO DIPENDENTE (IDDIPENDENTE, NOME, COGNOME, RAL, TIPODIPENDENTE) VALUES (13, 'Elisa', 'Santoro', 37000, 'Ingegnere');
+INSERT INTO DIPENDENTE (IDDIPENDENTE, NOME, COGNOME, RAL, TIPODIPENDENTE) VALUES (14, 'Giuseppe', 'Moretti', 28000, 'Responsabile');
+INSERT INTO DIPENDENTE (IDDIPENDENTE, NOME, COGNOME, RAL, TIPODIPENDENTE) VALUES (15, 'Caterina', 'Gentile', 32000, 'Collaudatore');
+INSERT INTO DIPENDENTE (IDDIPENDENTE, NOME, COGNOME, RAL, TIPODIPENDENTE) VALUES (16, 'Antonio', 'Lombardi', 27000, 'Magazziniere');
+INSERT INTO DIPENDENTE (IDDIPENDENTE, NOME, COGNOME, RAL, TIPODIPENDENTE) VALUES (17, 'Elena', 'Pellegrini', 38000, 'Operaio');
+INSERT INTO DIPENDENTE (IDDIPENDENTE, NOME, COGNOME, RAL, TIPODIPENDENTE) VALUES (18, 'Roberto', 'Ricci', 29000, 'Ingegnere');
+INSERT INTO DIPENDENTE (IDDIPENDENTE, NOME, COGNOME, RAL, TIPODIPENDENTE) VALUES (19, 'Monica', 'Ferri', 33000, 'Responsabile');
+INSERT INTO DIPENDENTE (IDDIPENDENTE, NOME, COGNOME, RAL, TIPODIPENDENTE) VALUES (20, 'Davide', 'Greco', 26000, 'Collaudatore');
+INSERT INTO DIPENDENTE (IDDIPENDENTE, NOME, COGNOME, RAL, TIPODIPENDENTE) VALUES (21, 'Silvia', 'Marini', 31000, 'Magazziniere');
+INSERT INTO DIPENDENTE (IDDIPENDENTE, NOME, COGNOME, RAL, TIPODIPENDENTE) VALUES (22, 'Lorenzo', 'Fabbri', 24000, 'Operaio');
+INSERT INTO DIPENDENTE (IDDIPENDENTE, NOME, COGNOME, RAL, TIPODIPENDENTE) VALUES (23, 'Federica', 'Bellini', 37000, 'Ingegnere');
+INSERT INTO DIPENDENTE (IDDIPENDENTE, NOME, COGNOME, RAL, TIPODIPENDENTE) VALUES (24, 'Andrea', 'Gatti', 28000, 'Ingegnere');
+INSERT INTO DIPENDENTE (IDDIPENDENTE, NOME, COGNOME, RAL, TIPODIPENDENTE) VALUES (25, 'Martina', 'Palmieri', 32000, 'Collaudatore');
+INSERT INTO DIPENDENTE (IDDIPENDENTE, NOME, COGNOME, RAL, TIPODIPENDENTE) VALUES (26, 'Gabriele', 'Barbieri', 27000, 'Magazziniere');
+INSERT INTO DIPENDENTE (IDDIPENDENTE, NOME, COGNOME, RAL, TIPODIPENDENTE) VALUES (27, 'Chiara', 'Serra', 38000, 'Operaio');
+INSERT INTO DIPENDENTE (IDDIPENDENTE, NOME, COGNOME, RAL, TIPODIPENDENTE) VALUES (28, 'Stefano', 'Mancini', 29000, 'Ingegnere');
+INSERT INTO DIPENDENTE (IDDIPENDENTE, NOME, COGNOME, RAL, TIPODIPENDENTE) VALUES (29, 'Giulia', 'Villa', 33000, 'Operaio');
+INSERT INTO DIPENDENTE (IDDIPENDENTE, NOME, COGNOME, RAL, TIPODIPENDENTE) VALUES (30, 'Mattia', 'Rinaldi', 26000, 'Collaudatore');
+
+\end{lstlisting}
+
+\subsubsection{Popolamento tabella turno}
+\begin{lstlisting}
+    
+/*Popolamento tabella turno*/
+INSERT INTO TURNO (IDDIPENDENTE, IDREPARTO, ORAINIZIO, ORAFINE) VALUES
+  (1, 1, TO_DATE('2023-06-01 08:00:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-06-01 16:00:00', 'YYYY-MM-DD HH24:MI:SS'));
+INSERT INTO TURNO (IDDIPENDENTE, IDREPARTO, ORAINIZIO, ORAFINE) VALUES
+  (2, 2, TO_DATE('2023-06-01 13:00:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-06-01 21:00:00', 'YYYY-MM-DD HH24:MI:SS'));
+INSERT INTO TURNO (IDDIPENDENTE, IDREPARTO, ORAINIZIO, ORAFINE) VALUES
+  (3, 3, TO_DATE('2023-06-01 09:00:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-06-01 17:00:00', 'YYYY-MM-DD HH24:MI:SS'));
+INSERT INTO TURNO (IDDIPENDENTE, IDREPARTO, ORAINIZIO, ORAFINE) VALUES
+  (4, 1, TO_DATE('2023-06-01 10:00:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-06-01 18:00:00', 'YYYY-MM-DD HH24:MI:SS'));
+INSERT INTO TURNO (IDDIPENDENTE, IDREPARTO, ORAINIZIO, ORAFINE) VALUES
+  (5, 2, TO_DATE('2023-06-01 14:00:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-06-01 22:00:00', 'YYYY-MM-DD HH24:MI:SS'));
+INSERT INTO TURNO (IDDIPENDENTE, IDREPARTO, ORAINIZIO, ORAFINE) VALUES
+  (6, 3, TO_DATE('2023-06-01 11:00:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-06-01 19:00:00', 'YYYY-MM-DD HH24:MI:SS'));
+INSERT INTO TURNO (IDDIPENDENTE, IDREPARTO, ORAINIZIO, ORAFINE) VALUES
+  (7, 1, TO_DATE('2023-06-01 12:00:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-06-01 20:00:00', 'YYYY-MM-DD HH24:MI:SS'));
+INSERT INTO TURNO (IDDIPENDENTE, IDREPARTO, ORAINIZIO, ORAFINE) VALUES
+  (8, 2, TO_DATE('2023-06-01 15:00:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-06-01 23:00:00', 'YYYY-MM-DD HH24:MI:SS'));
+INSERT INTO TURNO (IDDIPENDENTE, IDREPARTO, ORAINIZIO, ORAFINE) VALUES
+  (9, 3, TO_DATE('2023-06-02 08:00:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-06-02 16:00:00', 'YYYY-MM-DD HH24:MI:SS'));
+INSERT INTO TURNO (IDDIPENDENTE, IDREPARTO, ORAINIZIO, ORAFINE) VALUES
+  (10, 1, TO_DATE('2023-06-02 13:00:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-06-02 21:00:00', 'YYYY-MM-DD HH24:MI:SS'));
+INSERT INTO TURNO (IDDIPENDENTE, IDREPARTO, ORAINIZIO, ORAFINE) VALUES
+  (11, 2, TO_DATE('2023-06-02 09:00:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-06-02 17:00:00', 'YYYY-MM-DD HH24:MI:SS'));
+INSERT INTO TURNO (IDDIPENDENTE, IDREPARTO, ORAINIZIO, ORAFINE) VALUES
+  (12, 3, TO_DATE('2023-06-02 10:00:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-06-02 18:00:00', 'YYYY-MM-DD HH24:MI:SS'));
+INSERT INTO TURNO (IDDIPENDENTE, IDREPARTO, ORAINIZIO, ORAFINE) VALUES
+  (13, 1, TO_DATE('2023-06-02 14:00:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-06-02 22:00:00', 'YYYY-MM-DD HH24:MI:SS'));
+INSERT INTO TURNO (IDDIPENDENTE, IDREPARTO, ORAINIZIO, ORAFINE) VALUES
+  (14, 2, TO_DATE('2023-06-02 11:00:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-06-02 19:00:00', 'YYYY-MM-DD HH24:MI:SS'));
+INSERT INTO TURNO (IDDIPENDENTE, IDREPARTO, ORAINIZIO, ORAFINE) VALUES
+  (15, 3, TO_DATE('2023-06-02 12:00:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-06-02 20:00:00', 'YYYY-MM-DD HH24:MI:SS'));
+INSERT INTO TURNO (IDDIPENDENTE, IDREPARTO, ORAINIZIO, ORAFINE) VALUES
+  (16, 1, TO_DATE('2023-06-02 15:00:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-06-02 23:00:00', 'YYYY-MM-DD HH24:MI:SS'));
+INSERT INTO TURNO (IDDIPENDENTE, IDREPARTO, ORAINIZIO, ORAFINE) VALUES
+  (17, 2, TO_DATE('2023-06-03 08:00:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-06-03 16:00:00', 'YYYY-MM-DD HH24:MI:SS'));
+INSERT INTO TURNO (IDDIPENDENTE, IDREPARTO, ORAINIZIO, ORAFINE) VALUES
+  (18, 3, TO_DATE('2023-06-03 13:00:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-06-03 21:00:00', 'YYYY-MM-DD HH24:MI:SS'));
+INSERT INTO TURNO (IDDIPENDENTE, IDREPARTO, ORAINIZIO, ORAFINE) VALUES
+  (19, 1, TO_DATE('2023-06-03 09:00:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-06-03 17:00:00', 'YYYY-MM-DD HH24:MI:SS'));
+INSERT INTO TURNO (IDDIPENDENTE, IDREPARTO, ORAINIZIO, ORAFINE) VALUES
+  (20, 2, TO_DATE('2023-06-03 10:00:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-06-03 18:00:00', 'YYYY-MM-DD HH24:MI:SS'));
+INSERT INTO TURNO (IDDIPENDENTE, IDREPARTO, ORAINIZIO, ORAFINE) VALUES
+  (21, 3, TO_DATE('2023-06-03 14:00:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-06-03 22:00:00', 'YYYY-MM-DD HH24:MI:SS'));
+INSERT INTO TURNO (IDDIPENDENTE, IDREPARTO, ORAINIZIO, ORAFINE) VALUES
+  (22, 1, TO_DATE('2023-06-03 11:00:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-06-03 19:00:00', 'YYYY-MM-DD HH24:MI:SS'));
+INSERT INTO TURNO (IDDIPENDENTE, IDREPARTO, ORAINIZIO, ORAFINE) VALUES
+  (23, 2, TO_DATE('2023-06-03 12:00:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-06-03 20:00:00', 'YYYY-MM-DD HH24:MI:SS'));
+INSERT INTO TURNO (IDDIPENDENTE, IDREPARTO, ORAINIZIO, ORAFINE) VALUES
+  (24, 3, TO_DATE('2023-06-04 08:00:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-06-04 16:00:00', 'YYYY-MM-DD HH24:MI:SS'));
+INSERT INTO TURNO (IDDIPENDENTE, IDREPARTO, ORAINIZIO, ORAFINE) VALUES
+  (25, 1, TO_DATE('2023-06-04 13:00:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-06-04 21:00:00', 'YYYY-MM-DD HH24:MI:SS'));
+INSERT INTO TURNO (IDDIPENDENTE, IDREPARTO, ORAINIZIO, ORAFINE) VALUES
+  (26, 2, TO_DATE('2023-06-04 09:00:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-06-04 17:00:00', 'YYYY-MM-DD HH24:MI:SS'));
+INSERT INTO TURNO (IDDIPENDENTE, IDREPARTO, ORAINIZIO, ORAFINE) VALUES
+  (27, 3, TO_DATE('2023-06-04 10:00:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-06-04 18:00:00', 'YYYY-MM-DD HH24:MI:SS'));
+INSERT INTO TURNO (IDDIPENDENTE, IDREPARTO, ORAINIZIO, ORAFINE) VALUES
+  (28, 1, TO_DATE('2023-06-04 14:00:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-06-04 22:00:00', 'YYYY-MM-DD HH24:MI:SS'));
+INSERT INTO TURNO (IDDIPENDENTE, IDREPARTO, ORAINIZIO, ORAFINE) VALUES
+  (29, 2, TO_DATE('2023-06-04 11:00:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-06-04 19:00:00', 'YYYY-MM-DD HH24:MI:SS'));
+INSERT INTO TURNO (IDDIPENDENTE, IDREPARTO, ORAINIZIO, ORAFINE) VALUES
+  (30, 3, TO_DATE('2023-06-04 12:00:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-06-04 20:00:00', 'YYYY-MM-DD HH24:MI:SS'));
+
+    \end{lstlisting}
+\newpage
+    \subsection{Procedure e funzioni}
+    Di seguito le funzioni illustrate nel paragrafo 1.6 (Use case)
+\subsubsection{Cliente ordina un progetto}    
+    \begin{lstlisting}
+CREATE OR REPLACE FUNCTION ordina_progetto(
+  p_nome_cliente IN CLIENTE.NOME%TYPE,
+  p_cognome_cliente IN CLIENTE.COGNOME%TYPE,
+  p_email_cliente IN CLIENTE.EMAIL%TYPE,
+  p_telefono_cliente IN CLIENTE.TELEFONO%TYPE,
+  p_via_cliente IN CLIENTE.VIA%TYPE,
+  p_citta_cliente IN CLIENTE.CITTA%TYPE,
+  p_cap_cliente IN CLIENTE.CAP%TYPE,
+  p_nome_progetto IN PROGETTO.NOME%TYPE
+) RETURN NUMBER
+IS
+  v_id_cliente CLIENTE.IDCLIENTE%TYPE;
+  v_id_ordine ORDINE.IDORDINE%TYPE;
+  v_id_progetto PROGETTO.IDPROG%TYPE;
+BEGIN
+  -- Verifica se il cliente esiste già o se deve essere creato
+  SELECT IDCLIENTE INTO v_id_cliente
+  FROM CLIENTE
+  WHERE NOME = p_nome_cliente
+    AND COGNOME = p_cognome_cliente
+    AND EMAIL = p_email_cliente
+    AND TELEFONO = p_telefono_cliente
+    AND VIA = p_via_cliente
+    AND CITTA = p_citta_cliente
+    AND CAP = p_cap_cliente;
+
+  -- Se il cliente non esiste, crealo
+  IF v_id_cliente IS NULL THEN
+    INSERT INTO CLIENTE (IDCLIENTE, NOME, COGNOME, EMAIL, TELEFONO, VIA, CITTA, CAP)
+    VALUES (SEQ_CLIENTE.NEXTVAL, p_nome_cliente, p_cognome_cliente, p_email_cliente, p_telefono_cliente, p_via_cliente, p_citta_cliente, p_cap_cliente);
+
+    v_id_cliente := SEQ_CLIENTE.CURRVAL;
+  END IF;
+
+  -- Ottieni l'ID del progetto
+  SELECT IDPROG INTO v_id_progetto
+  FROM PROGETTO
+  WHERE NOME = p_nome_progetto;
+
+  -- Crea un nuovo ordine
+  INSERT INTO ORDINE (IDORDINE, IDFATTURA, IDCLIENTE, IDSPEDIZIONE, NUMEROPRODOTTI, DATACREAZIONE)
+  VALUES (SEQ_ORDINE.NEXTVAL, NULL, v_id_cliente, NULL, 0, SYSDATE);
+
+  v_id_ordine := SEQ_ORDINE.CURRVAL;
+
+  -- Aggiorna l'ordine con l'ID del progetto
+  UPDATE ORDINE
+  SET IDPROG = v_id_progetto
+  WHERE IDORDINE = v_id_ordine;
+
+  COMMIT;
+
+  RETURN v_id_ordine;
+END;
+/
+/*Questa funzione accetta come parametri i dettagli del cliente (nome, cognome, email, telefono, via, città, CAP) e il nome del progetto.
+La funzione verifica se il cliente esiste già nella tabella "Cliente" in base alle informazioni fornite. Se il cliente non esiste, viene
+creato un nuovo record nella tabella "Cliente". Successivamente, viene recuperato l'ID del progetto dalla tabella "Progetto". Infine,
+viene creato un nuovo ordine nella tabella "Ordine" con i dettagli del cliente e l'ID del progetto. La funzione restituisce l'ID dell'ordine creato.*/
+\end{lstlisting}
+
+\subsubsection{Cliente cancella un progetto dall'ordine}
+\begin{lstlisting}
+CREATE OR REPLACE FUNCTION cancella_progetto_ordine(
+  p_id_ordine IN ORDINE.IDORDINE%TYPE,
+  p_id_progetto IN PROGETTO.IDPROG%TYPE
+) RETURN BOOLEAN
+IS
+  v_num_progetti NUMBER;
+BEGIN
+  -- Controlla il numero di progetti presenti nell'ordine
+  SELECT COUNT(*)
+  INTO v_num_progetti
+  FROM ORDINE o
+  JOIN PROGETTO p ON o.IDPROG = p.IDPROG
+  WHERE o.IDORDINE = p_id_ordine;
+
+  -- Verifica se l'ordine esiste e contiene più di due progetti
+  IF v_num_progetti > 2 THEN
+    -- Cancella il progetto dall'ordine
+    DELETE FROM ORDINE
+    WHERE IDORDINE = p_id_ordine
+    AND IDPROG = p_id_progetto;
+
+    COMMIT;
+    
+    RETURN TRUE;
+  ELSE
+    RETURN FALSE;
+  END IF;
+EXCEPTION
+  WHEN OTHERS THEN
+    RETURN FALSE;
+END;
+/
+/*Questa funzione accetta l'ID dell'ordine e l'ID del progetto come parametri. Utilizza una query per contare il numero
+di progetti presenti nell'ordine specificato. Se il numero di progetti è maggiore di due, viene eliminato il progetto 
+specificato dall'ordine. Viene restituito il valore TRUE se il progetto viene cancellato con successo, altrimenti viene
+restituito il valore FALSE.*/
+\end{lstlisting}
+
+\subsubsection{Fornitore inserisce una nuova fornitura}
+\begin{lstlisting} 
+CREATE OR REPLACE PROCEDURE inserisci_fornitura(
+    IN_PARTITAIVAFORNITORE IN VARCHAR2,
+    IN_EANCOMPONENTE IN VARCHAR2,
+    IN_QUANTITA IN NUMBER,
+    IN_DATAACQUISTO IN DATE
+)
+AS
+    V_EXISTE_FORNITORE NUMBER;
+    V_EXISTE_COMPONENTE NUMBER;
+BEGIN
+    -- Verifica se il fornitore esiste nella tabella FORNITORE
+    SELECT COUNT(*) INTO V_EXISTE_FORNITORE
+    FROM FORNITORE
+    WHERE PARTITAIVA = IN_PARTITAIVAFORNITORE;
+
+    IF V_EXISTE_FORNITORE = 0 THEN
+        RAISE_APPLICATION_ERROR(-20001, 'Il fornitore specificato non esiste.');
+    END IF;
+
+    -- Verifica se il componente esiste nella tabella COMPONENTE
+    SELECT COUNT(*) INTO V_EXISTE_COMPONENTE
+    FROM COMPONENTE
+    WHERE EAN = IN_EANCOMPONENTE;
+
+    IF V_EXISTE_COMPONENTE = 0 THEN
+        RAISE_APPLICATION_ERROR(-20002, 'Il componente specificato non esiste.');
+    END IF;
+
+    -- Inserisce la nuova riga nella tabella FORNITURA
+    INSERT INTO FORNITURA (PARTITAIVAFORNITORE, EANCOMPONENTE, QUANTITA, DATAACQUISTO)
+    VALUES (IN_PARTITAIVAFORNITORE, IN_EANCOMPONENTE, IN_QUANTITA, IN_DATAACQUISTO);
+
+    COMMIT;
+EXCEPTION
+    WHEN OTHERS THEN
+        ROLLBACK;
+     RAISE;
+END;
+/
+
+/*Viene verificato se il fornitore esiste nella tabella "FORNITORE" contando il numero di righe corrispondenti 
+alla partita IVA specificata. Se il contatore è uguale a zero, viene sollevato un errore con un messaggio appropriato.
+Viene verificato se il componente esiste nella tabella "COMPONENTE" contando il numero di righe corrispondenti
+al codice EAN specificato. Se il contatore è uguale a zero, viene sollevato un errore con un messaggio appropriato.
+Viene eseguita un'istruzione di inserimento nella tabella "FORNITURA" con i valori passati come parametri.
+Viene eseguito un commit per confermare la transazione.
+In caso di errori durante l'esecuzione della procedura, viene eseguito un rollback per annullare la transazione
+e viene sollevata un'eccezione per segnalare l'errore.
+In sostanza, la procedura consente di inserire una nuova riga nella tabella "FORNITURA" dopo aver verificato che
+il fornitore e il componente specificati esistano nelle rispettive tabelle.*/
+\end{lstlisting}
+
+\subsubsection{Stima di consegna di un progetto}
+\begin{lstlisting}
+ CREATE OR REPLACE FUNCTION stima_consegna_progetto(
+    IN_IDCLIENTE IN NUMBER,
+    IN_IDORDINE IN NUMBER,
+    IN_IDPROGETTO IN NUMBER
+) RETURN DATE
+IS
+    V_DATAINIZIO PROGETTO.DATAINIZIO%TYPE;
+    V_STIMA_GIORNI ORDINE.NUMEROPRODOTTI%TYPE;
+    V_CONSEGNA_EFFETTIVA DATE;
+BEGIN
+    -- Recupera la data di inizio del progetto
+    SELECT DATAINIZIO INTO V_DATAINIZIO
+    FROM PROGETTO
+    WHERE IDPROG = IN_IDPROGETTO;
+
+    -- Calcola la stima dei giorni di consegna in base al numero di prodotti nell'ordine
+    SELECT NUMEROPRODOTTI INTO V_STIMA_GIORNI
+    FROM ORDINE
+    WHERE IDORDINE = IN_IDORDINE;
+
+    -- Calcola la consegna effettiva aggiungendo la stima dei giorni alla data di inizio del progetto
+    V_CONSEGNA_EFFETTIVA := V_DATAINIZIO + V_STIMA_GIORNI;
+
+    RETURN V_CONSEGNA_EFFETTIVA;
+EXCEPTION
+    WHEN NO_DATA_FOUND THEN
+        RETURN NULL;
+END;
+/
+
+/*La funzione STIMA_CONSEGNA_PROGETTO prende in input l'ID del cliente, l'ID dell'ordine e l'ID del progetto.
+Recupera la data di inizio del progetto e calcola la stima dei giorni di consegna basata sul numero di prodotti
+nell'ordine. Successivamente, calcola la data di consegna effettiva aggiungendo la stima dei giorni alla data
+di inizio del progetto. Infine, restituisce la data di consegna effettiva.*/
+\end{lstlisting}
+
+\subsection{Viste}
+    Una vista in basi di dati è una rappresentazione virtuale di un insieme di dati preesistenti all'interno del database. Essa è costituita da una query che definisce una visualizzazione specifica dei dati presenti in una o più tabelle del database. La vista permette di accedere e manipolare i dati in modo strutturato, come se fossero contenuti in una tabella reale
+    \subsubsection{VISTA ORDINE CLIENTE}
+    \begin{lstlisting}
+--Vista per visualizzare i dettagli dell'ordine insieme alle informazioni del cliente:
+CREATE VIEW VISTA_ORDINE_CLIENTE AS
+SELECT o.IDORDINE, o.DATACREAZIONE, c.NOME, c.COGNOME, c.EMAIL
+FROM ORDINE o
+JOIN CLIENTE c ON o.IDCLIENTE = c.IDCLIENTE;
+
+    \end{lstlisting}
+    \subsubsection{VISTA FATTURA DETTAGLIATA}
+    \begin{lstlisting}
+--Vista per visualizzare i dettagli completi di una fattura, inclusi i dettagli dell'ordine e le informazioni del cliente:
+  
+CREATE VIEW VISTA_FATTURA_DETTAGLIATA AS
+SELECT f.IDFATTURA, f.DATAEMISSIONE, f.TOTALE, o.IDORDINE, o.DATACREAZIONE, c.NOME, c.COGNOME, c.EMAIL
+FROM FATTURA f
+JOIN ORDINE o ON f.IDFATTURA = o.IDFATTURA
+JOIN CLIENTE c ON o.IDCLIENTE = c.IDCLIENTE;
+
+    \end{lstlisting}
+    \subsubsection{VISTA COMPONENTI PROGETTO}
+    \begin{lstlisting}
+--Vista per visualizzare i componenti associati a ciascun progetto con le relative quantità:    
+CREATE VIEW VISTA_COMPONENTI_PROGETTO AS
+SELECT cp.IDPROG, cp.EAN, cp.QUANTITA, c.NOME, c.PREZZO
+FROM COMPONENTIPROGETTO cp
+JOIN COMPONENTE c ON cp.EAN = c.EAN;
+    \end{lstlisting}
+    \subsubsection{VISTA DIPENDENTE REPARTO}
+    \begin{lstlisting}
+--Vista per visualizzare i dettagli di un dipendente insieme alle informazioni del reparto di appartenenza:
+CREATE VIEW VISTA_DIPENDENTE_REPARTO AS
+SELECT d.IDDIPENDENTE, d.NOME, d.COGNOME, d.RAL, d.TIPODIPENDENTE, r.IDREPARTO, r.TELEFONO
+FROM DIPENDENTE d
+JOIN REPARTO r ON d.IDDIPENDENTE = r.IDREPARTO;        
+    \end{lstlisting}
+    \newpage
+    
+\subsection{Data Control Language}
+
+In questo paragrafo creiamo gli utenti che possono accedere al database.
+\begin{lstlisting}
+--Creazione utenti 
+CREATE USER proprietario_db_fabbrica    IDENTIFIED BY admin;
+
+CREATE USER responsabile_DB   IDENTIFIED BY pass_responsabile;
+GRANT CONNECT, CREATE SESSION TO responsabile_DB;
+GRANT UPDATE ON progettazione TO responsabile_DB;
+GRANT UPDATE ON produzione TO responsabile_DB;
+GRANT EXECUTE ON STIMA_CONSEGNA_PROGETTO TO responsabile_DB; 
+
+
+CREATE USER cliente_DB IDENTIFIED BY pass_cliente;
+GRANT CONNECT, CREATE SESSION TO cliente_DB;
+GRANT SELECT ON cliente TO cliente_DB;
+GRANT SELECT ON progetto TO cliente_DB;
+GRANT INSERT ON cliente TO cliente_DB;
+GRANT INSERT ON ordine TO cliente_DB;
+GRANT UPDATE ON ordine TO cliente_DB;
+GRANT EXECUTE ON ordina_progetto TO cliente_DB;
+GRANT EXECUTE ON cancella_progetto_ordine TO cliente_DB;
+
+
+CREATE USER fornitore_DB IDENTIFIED BY pass_fornitore;
+GRANT CONNECT, CREATE SESSION TO fornitore_DB;
+GRANT SELECT ON fornitore TO fornitore_DB;
+GRANT SELECT ON componente TO fornitore_DB;
+GRANT INSERT ON fornitura TO fornitore_DB;
+GRANT EXECUTE ON inserisci_fornitura TO fornitore_DB;
+\end{lstlisting}  
+\subsection{Scheduler}
+\begin{lstlisting}
+    BEGIN
+  DBMS_SCHEDULER.CREATE_JOB(
+    job_name        => 'CANCELLA_ORDINE',
+    job_type        => 'PLSQL_BLOCK',
+    job_action      => 'BEGIN
+                          DELETE FROM ORDINE
+                          WHERE IDORDINE = :order_id;
+                        END;',
+    start_date      => SYSTIMESTAMP,
+    repeat_interval => 'freq=hourly; interval=5',
+    enabled         => TRUE,
+    auto_drop       => TRUE
+  );
+END;
+/
+/*DBMS_SCHEDULER.CREATE_JOB: Questa procedura crea un nuovo job scheduler con i parametri specificati.
+job_name: Specifica il nome del job. In questo caso, il nome del job è "CANCELLA_ORDINE".
+job_type: Specifica il tipo di job come "PLSQL_BLOCK". Indica che il job eseguirà un blocco di codice PL/SQL.
+job_action: Questa è l'azione del job, ovvero il blocco di codice PL/SQL da eseguire. Nel caso specifico,
+il blocco di codice esegue una query di eliminazione che cancella l'ordine dalla tabella ORDINE in base
+all'ID dell'ordine fornito come parametro :order_id. Nota che :order_id è un segnaposto che dovrebbe essere
+sostituito con il valore effettivo dell'ID dell'ordine da cancellare.
+start_date: Specifica la data di inizio del job. In questo caso, viene utilizzata la funzione SYSTIMESTAMP
+per impostare la data di inizio al momento corrente.
+epeat_interval: Specifica l'intervallo di ripetizione del job. In questo caso, l'intervallo è impostato su
+"freq=hourly; interval=5", il che significa che il job verrà eseguito ogni 5 ore.
+enabled: Specifica se il job è abilitato o meno. Nel caso specifico, è impostato su TRUE, quindi il job sarà
+abilitato dopo la sua creazione.
+auto_drop: Specifica se il job verrà eliminato automaticamente dopo l'esecuzione. In questo caso,
+è impostato su TRUE, quindi il job verrà eliminato automaticamente dopo aver eseguito la cancellazione dell'ordine.*/
+
+
+\end{lstlisting}
+\end{document}
